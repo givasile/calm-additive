@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CALM: interpretable by design</title>
+<meta name="description" content="CALM — Conditionally Additive Local Models: accurate, locally additive, interpretable-by-design models for tabular data. NeurIPS 2026.">
+<meta property="og:title" content="CALM: interpretable by design">
+<meta property="og:description" content="Accurate locally additive models with conditional feature effects for tabular data. NeurIPS 2026.">
+<meta property="og:image" content="https://givasile.github.io/calm-additive/assets/concept_f1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16181d;
+    --muted: #5b6270;
+    --line: #e5e7eb;
+    --card: #f6f7f9;
+    --accent: #1f77b4;
+    --accent-2: #ff7f0e;
+    --code-bg: #f1f3f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1115; --fg: #e8eaf0; --muted: #9aa3b2; --line: #262a33;
+      --card: #171a21; --accent: #5aa9e6; --accent-2: #ffa54f; --code-bg: #1b1f27;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1115; --fg: #e8eaf0; --muted: #9aa3b2; --line: #262a33;
+    --card: #171a21; --accent: #5aa9e6; --accent-2: #ffa54f; --code-bg: #1b1f27;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px; line-height: 1.6;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 80px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.12; margin: 0 0 10px; letter-spacing: -.01em; }
+  h1 small { display: block; font-size: .5em; font-weight: 500; color: var(--muted); margin-top: 10px; line-height: 1.35; }
+  .tagline { font-size: 20px; color: var(--muted); margin: 6px 0 22px; }
+  .authors { margin: 0 0 26px; }
+  .affil { color: var(--muted); font-size: 15px; margin: 0 0 26px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 36px; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--card);
+    color: var(--fg); text-decoration: none; font-weight: 500; font-size: 15px;
+  }
+  .links a:hover { border-color: var(--accent); }
+  .links a.soon { opacity: .55; pointer-events: none; }
+  .links a.soon::after { content: "soon"; font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 6px; }
+  figure { margin: 0 0 36px; }
+  .panels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .panels img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
+  h2 { font-size: 22px; margin: 36px 0 12px; }
+  p { margin: 0 0 14px; }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; overflow-x: auto; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px; line-height: 1.55; margin: 0 0 12px;
+  }
+  code { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: .92em; }
+  .note { color: var(--muted); font-size: 14px; }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0 0 14px; font-size: 16px; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; }
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  a { color: var(--accent); }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .panels { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 1fr; gap: 2px; }
+    .kv dt { margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <span class="eyebrow">NeurIPS 2026 · poster</span>
+  <h1>CALM: interpretable by design
+    <small>Interpretability-by-Design with Accurate Locally Additive Models and Conditional Feature Effects</small>
+  </h1>
+  <p class="tagline">Accurate locally additive models for tabular data. The interpretability of a GAM, the accuracy of a GA²M.</p>
+
+  <p class="authors">Vasilis Gkolemis, Loukas Kavouras, Dimitrios Kyriakopoulos, Konstantinos Tsopelas, Dimitrios Rontogiannis, Giuseppe Casalicchio, Theodore Dalamagas, Christos Diou</p>
+
+  <nav class="links" aria-label="links">
+    <a href="https://arxiv.org/abs/2602.16503">📄 Paper (arXiv)</a>
+    <a href="https://github.com/givasile/calm-additive">💻 Code</a>
+    <a class="soon" href="#">📦 PyPI</a>
+    <a class="soon" href="#">▶ Colab</a>
+    <a class="soon" href="#">🖼 Poster</a>
+    <a href="#bibtex">❞ BibTeX</a>
+  </nav>
+
+  <figure>
+    <div class="panels">
+      <img src="assets/concept_f1.png" alt="Feature effect of x1 conditioned on x3: two shape functions, one per region">
+      <img src="assets/concept_f2.png" alt="Feature effect of x2 conditioned on other features">
+      <img src="assets/concept_f3.png" alt="Feature effect of a third feature, region-wise">
+    </div>
+    <figcaption>One univariate shape function per feature <em>per region</em>. Regions are simple threshold conditions on the features it interacts with, so every effect stays a curve you can read.</figcaption>
+  </figure>
+
+  <h2>Abstract</h2>
+  <p>Generalized additive models (GAMs) offer interpretability through independent univariate feature effects but underfit when interactions are present in data. GA²Ms add selected pairwise interactions, which improves accuracy but sacrifices interpretability and limits model auditing. We propose <em>Conditionally Additive Local Models</em> (CALMs), a new model class that balances the interpretability of GAMs with the accuracy of GA²Ms. CALMs allow multiple univariate shape functions per feature, each active in a different region of the input space. These regions are defined independently for each feature as simple logical conditions (thresholds) on the features it interacts with. As a result, effects remain locally additive while varying across subregions to capture interactions. We further propose a principled distillation-based training pipeline that identifies homogeneous regions with limited interactions and fits interpretable shape functions via region-aware backfitting. Experiments on diverse classification and regression tasks show that CALMs consistently outperform GAMs and achieve accuracy broadly comparable to GA²Ms, while preserving the univariate auditability that GA²Ms forfeit.</p>
+
+  <h2>Use it</h2>
+  <pre><code>pip install calm-additive</code></pre>
+  <pre><code>from calm_additive import CALMRegressor
+
+model = CALMRegressor().fit(X_train, y_train)
+y_hat = model.predict(X_test)
+
+model.explain()            # every feature: its regions and the shape function in each
+model.plot("temperature")  # one feature, one curve per region</code></pre>
+  <p class="note">The package is being released in October 2026, built on <a href="https://github.com/givasile/effector">effector</a>. The API above is the target; this page updates with the first release.</p>
+
+  <h2 id="bibtex">Cite</h2>
+  <pre><code>@inproceedings{gkolemis2026calm,
+  title     = {Interpretability-by-Design with Accurate Locally Additive Models
+               and Conditional Feature Effects},
+  author    = {Gkolemis, Vasilis and Kavouras, Loukas and Kyriakopoulos, Dimitrios
+               and Tsopelas, Konstantinos and Rontogiannis, Dimitrios
+               and Casalicchio, Giuseppe and Dalamagas, Theodore and Diou, Christos},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</code></pre>
+
+  <footer>
+    <a href="https://github.com/givasile/calm-additive">github.com/givasile/calm-additive</a> · built on <a href="https://github.com/givasile/effector">effector</a>
+  </footer>
+</main>
+</body>
+</html>
