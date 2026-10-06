@@ -1,0 +1,462 @@
+{
+ "classification": {
+  "metric": "accuracy",
+  "datasets": [
+   {
+    "name": "Adult",
+    "score": {
+     "blackbox": 0.87,
+     "nam": 0.851,
+     "gam": 0.87,
+     "calm": 0.87,
+     "eb2m": 0.871,
+     "node": 0.85,
+     "gami": 0.857
+    },
+    "interactions": {
+     "calm": 9.2,
+     "eb2m": 12.0,
+     "node": 72.6,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "COMPAS",
+    "score": {
+     "blackbox": 0.664,
+     "nam": 0.682,
+     "gam": 0.683,
+     "calm": 0.678,
+     "eb2m": 0.684,
+     "node": 0.667,
+     "gami": 0.686
+    },
+    "interactions": {
+     "calm": 4.4,
+     "eb2m": 9.0,
+     "node": 36.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "HELOC",
+    "score": {
+     "blackbox": 0.717,
+     "nam": 0.723,
+     "gam": 0.728,
+     "calm": 0.729,
+     "eb2m": 0.73,
+     "node": 0.715,
+     "gami": 0.725
+    },
+    "interactions": {
+     "calm": 3.0,
+     "eb2m": 21.0,
+     "node": 163.8,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "MIMIC2",
+    "score": {
+     "blackbox": 0.89,
+     "nam": 0.886,
+     "gam": 0.886,
+     "calm": 0.886,
+     "eb2m": 0.886,
+     "node": 0.888,
+     "gami": 0.884
+    },
+    "interactions": {
+     "calm": 6.4,
+     "eb2m": 16.0,
+     "node": 115.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Appendicitis",
+    "score": {
+     "blackbox": 0.859,
+     "nam": 0.848,
+     "gam": 0.868,
+     "calm": 0.841,
+     "eb2m": 0.869,
+     "node": 0.849,
+     "gami": 0.764
+    },
+    "interactions": {
+     "calm": 6.6,
+     "eb2m": 7.0,
+     "node": 21.0,
+     "gami": 6.2
+    }
+   },
+   {
+    "name": "Phoneme",
+    "score": {
+     "blackbox": 0.9,
+     "nam": 0.808,
+     "gam": 0.827,
+     "calm": 0.849,
+     "eb2m": 0.863,
+     "node": 0.869,
+     "gami": 0.876
+    },
+    "interactions": {
+     "calm": 5.4,
+     "eb2m": 5.0,
+     "node": 10.0,
+     "gami": 10.0
+    }
+   },
+   {
+    "name": "SPECTF",
+    "score": {
+     "blackbox": 0.857,
+     "nam": 0.839,
+     "gam": 0.894,
+     "calm": 0.865,
+     "eb2m": 0.882,
+     "node": 0.82,
+     "gami": 0.874
+    },
+    "interactions": {
+     "calm": 7.2,
+     "eb2m": 40.0,
+     "node": 273.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Magic",
+    "score": {
+     "blackbox": 0.885,
+     "nam": 0.85,
+     "gam": 0.858,
+     "calm": 0.865,
+     "eb2m": 0.872,
+     "node": 0.876,
+     "gami": 0.874
+    },
+    "interactions": {
+     "calm": 7.2,
+     "eb2m": 9.0,
+     "node": 44.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Bank",
+    "score": {
+     "blackbox": 0.91,
+     "nam": 0.901,
+     "gam": 0.903,
+     "calm": 0.905,
+     "eb2m": 0.909,
+     "node": 0.903,
+     "gami": 0.908
+    },
+    "interactions": {
+     "calm": 7.6,
+     "eb2m": 15.0,
+     "node": 104.2,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Churn",
+    "score": {
+     "blackbox": 0.959,
+     "nam": 0.885,
+     "gam": 0.887,
+     "calm": 0.958,
+     "eb2m": 0.957,
+     "node": 0.954,
+     "gami": 0.952
+    },
+    "interactions": {
+     "calm": 10.8,
+     "eb2m": 18.0,
+     "node": 137.4,
+     "gami": 20.0
+    }
+   }
+  ]
+ },
+ "regression": {
+  "metric": "rmse",
+  "datasets": [
+   {
+    "name": "Bike Sharing",
+    "score": {
+     "blackbox": 39.35,
+     "nam": 101.97,
+     "gam": 100.17,
+     "calm": 62.4,
+     "eb2m": 54.8,
+     "node": 54.47,
+     "gami": 53.44
+    },
+    "interactions": {
+     "calm": 4.6,
+     "eb2m": 10.0,
+     "node": 53.6,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "California Housing",
+    "score": {
+     "blackbox": 0.45,
+     "nam": 0.61,
+     "gam": 0.55,
+     "calm": 0.52,
+     "eb2m": 0.49,
+     "node": 0.5,
+     "gami": 0.51
+    },
+    "interactions": {
+     "calm": 2.0,
+     "eb2m": 8.0,
+     "node": 28.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Parkinsons Motor",
+    "score": {
+     "blackbox": 1.44,
+     "nam": 6.11,
+     "gam": 4.11,
+     "calm": 2.12,
+     "eb2m": 2.35,
+     "node": 3.49,
+     "gami": 2.76
+    },
+    "interactions": {
+     "calm": 10.6,
+     "eb2m": 18.0,
+     "node": 126.2,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Parkinsons Total",
+    "score": {
+     "blackbox": 1.86,
+     "nam": 7.9,
+     "gam": 4.73,
+     "calm": 3.0,
+     "eb2m": 2.77,
+     "node": 4.6,
+     "gami": 3.81
+    },
+    "interactions": {
+     "calm": 9.8,
+     "eb2m": 18.0,
+     "node": 129.2,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Seoul Bike",
+    "score": {
+     "blackbox": 209.6,
+     "nam": 320.2,
+     "gam": 300.0,
+     "calm": 251.4,
+     "eb2m": 235.2,
+     "node": 231.0,
+     "gami": 245.82
+    },
+    "interactions": {
+     "calm": 4.6,
+     "eb2m": 13.0,
+     "node": 83.2,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Wine",
+    "score": {
+     "blackbox": 0.62,
+     "nam": 0.72,
+     "gam": 0.7,
+     "calm": 0.7,
+     "eb2m": 0.68,
+     "node": 0.69,
+     "gami": 0.71
+    },
+    "interactions": {
+     "calm": 4.2,
+     "eb2m": 10.0,
+     "node": 54.6,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Energy",
+    "score": {
+     "blackbox": 67.97,
+     "nam": 89.8,
+     "gam": 83.75,
+     "calm": 82.85,
+     "eb2m": 77.33,
+     "node": 82.18,
+     "gami": 180.1
+    },
+    "interactions": {
+     "calm": 31.0,
+     "eb2m": 26.0,
+     "node": 192.0,
+     "gami": 4.0
+    }
+   },
+   {
+    "name": "CCPP",
+    "score": {
+     "blackbox": 3.09,
+     "nam": 4.21,
+     "gam": 3.65,
+     "calm": 3.65,
+     "eb2m": 3.28,
+     "node": 3.97,
+     "gami": 3.92
+    },
+    "interactions": {
+     "calm": 0.0,
+     "eb2m": 4.0,
+     "node": 6.0,
+     "gami": 5.8
+    }
+   },
+   {
+    "name": "Electrical",
+    "score": {
+     "blackbox": 0.04,
+     "nam": 0.04,
+     "gam": 0.02,
+     "calm": 0.02,
+     "eb2m": 0.02,
+     "node": 0.01,
+     "gami": 0.02
+    },
+    "interactions": {
+     "calm": 0.0,
+     "eb2m": 12.0,
+     "node": 68.6,
+     "gami": 12.0
+    }
+   },
+   {
+    "name": "Elevators",
+    "score": {
+     "blackbox": 0.002,
+     "nam": 0.002,
+     "gam": 0.002,
+     "calm": 0.002,
+     "eb2m": 0.002,
+     "node": 0.002,
+     "gami": 0.002
+    },
+    "interactions": {
+     "calm": 5.8,
+     "eb2m": 17.0,
+     "node": 115.4,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "No2",
+    "score": {
+     "blackbox": 0.47,
+     "nam": 0.5,
+     "gam": 0.49,
+     "calm": 0.49,
+     "eb2m": 0.47,
+     "node": 0.52,
+     "gami": 0.5
+    },
+    "interactions": {
+     "calm": 7.4,
+     "eb2m": 7.0,
+     "node": 21.0,
+     "gami": 20.0
+    }
+   },
+   {
+    "name": "Sensory",
+    "score": {
+     "blackbox": 0.51,
+     "nam": 0.48,
+     "gam": 0.48,
+     "calm": 0.45,
+     "eb2m": 0.45,
+     "node": 0.49,
+     "gami": 0.46
+    },
+    "interactions": {
+     "calm": 4.4,
+     "eb2m": 10.0,
+     "node": 54.0,
+     "gami": 16.0
+    }
+   },
+   {
+    "name": "Airfoil",
+    "score": {
+     "blackbox": 1.54,
+     "nam": 4.8,
+     "gam": 4.54,
+     "calm": 3.05,
+     "eb2m": 2.17,
+     "node": 2.13,
+     "gami": 4.79
+    },
+    "interactions": {
+     "calm": 3.0,
+     "eb2m": 5.0,
+     "node": 10.0,
+     "gami": 10.0
+    }
+   },
+   {
+    "name": "Skill Craft",
+    "score": {
+     "blackbox": 0.94,
+     "nam": 0.93,
+     "gam": 0.9,
+     "calm": 0.9,
+     "eb2m": 0.9,
+     "node": 0.91,
+     "gami": 1.38
+    },
+    "interactions": {
+     "calm": 2.0,
+     "eb2m": 18.0,
+     "node": 135.6,
+     "gami": 16.0
+    }
+   },
+   {
+    "name": "Ailerons",
+    "score": {
+     "blackbox": 0.0002,
+     "nam": 0.0002,
+     "gam": 0.0002,
+     "calm": 0.0002,
+     "eb2m": 0.0002,
+     "node": 0.0002,
+     "gami": 0.0002
+    },
+    "interactions": {
+     "calm": 2.6,
+     "eb2m": 36.0,
+     "node": 232.4,
+     "gami": 20.0
+    }
+   }
+  ]
+ }
+}

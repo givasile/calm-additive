@@ -1,0 +1,95 @@
+site_name: calm-additive
+site_url: https://givasile.github.io/calm-additive/docs/
+repo_url: https://github.com/givasile/calm-additive
+repo_name: givasile/calm-additive
+
+nav:
+  - calm-additive: index.md
+  - Guides: guides.md
+  - Examples: examples.md
+  - API Docs: api_docs.md
+
+theme:
+  name: material
+
+  font:
+    text: Roboto Flex
+    code: Roboto Mono
+
+  features:
+    - navigation.footer
+    - header.autohide
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [./../]
+          options:
+            filters: ["!^_"]  # Exclude private members (names starting with _)
+            show_source: true
+            heading_level: 1
+            summary: true
+            merge_init_into_class: true
+            docstring_options:
+              warn_missing_types: false  # types live in the signatures
+  - glightbox
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+watch:
+  - ../calm_additive
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/givasile/calm-additive

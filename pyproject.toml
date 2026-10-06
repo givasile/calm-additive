@@ -1,0 +1,40 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "calm-additive"
+description = "CALM: interpretable by design. Accurate locally additive models for tabular data."
+authors = [{name = "Vasilis Gkolemis", email = "ntipakos@gmail.com"}]
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+keywords = ["additive models", "interpretable machine learning", "glassbox", "tabular", "explainable ai"]
+dynamic = ["version"]
+readme = "README.md"
+dependencies = [
+    # select_regions(target=, relative_gain=, max_conditional_interactions=)
+    # and from_dataframe(return_encoding=) arrived in 0.6.0
+    "effector>=0.6.0",
+    "numpy",
+    "scikit-learn",
+    "xgboost",
+    "interpret",
+    "tqdm",
+]
+
+[project.urls]
+homepage = "https://givasile.github.io/calm-additive"
+source = "https://github.com/givasile/calm-additive"
+
+[tool.flit.module]
+name = "calm_additive"
+
+[dependency-groups]
+test = ["pytest"]
+docs = [
+    "mkdocs",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "mkdocs-material",
+    "mkdocs-glightbox",
+]
