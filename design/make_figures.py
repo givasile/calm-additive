@@ -45,9 +45,9 @@ k = len(pairs_hr)
 pair = d2["ga2m_hr_x_workingday"]
 wd, off = col(d1, "workingday = True"), col(d1, "workingday = False")
 trio = f"""<div class="trio">
- <figure class="mcard"><figcaption><b>GAM</b><span>one curve per feature</span></figcaption>{chart(300, 200, [("s0", d2["gam_hr"])], yd, "hour of day")}<p>The interaction is averaged away.</p></figure>
- <figure class="mcard hi"><figcaption><b>CALM</b><span>one curve per feature, per region</span></figcaption>{chart(300, 200, [("s1", wd), ("s2", off)], yd, "hour of day", legend=[("working day", "s1"), ("day off", "s2")])}<p>The interaction is two curves you can read.</p></figure>
- <figure class="mcard"><figcaption><b>GA²M</b><span>curves plus pairwise heatmaps</span></figcaption>{chart(300, 104, [("s0", d2["ga2m_hr_main"])], yd, pad=(34, 14, 8, 8))}{heat(300, 96, [pair["True"], pair["False"]], ["work", "off"], 230, pad=(34, 14, 6, 26))}<p>The interaction is a surface to decode; one of {k} that involve the hour.</p></figure>
+ <figure class="fig">{chart(300, 200, [("s0", d2["gam_hr"])], yd, "hour of day")}<figcaption>(a) GAM: one curve per feature. The interaction is averaged away.</figcaption></figure>
+ <figure class="fig hi">{chart(300, 200, [("s1", wd), ("s2", off)], yd, "hour of day", legend=[("working day", "s1"), ("day off", "s2")])}<figcaption><b>(b) CALM</b>: one curve per feature, per region. The interaction is two curves you can read.</figcaption></figure>
+ <figure class="fig">{chart(300, 104, [("s0", d2["ga2m_hr_main"])], yd, pad=(34, 14, 8, 8))}{heat(300, 96, [pair["True"], pair["False"]], ["work", "off"], 230, pad=(34, 14, 6, 26))}<figcaption>(c) GA²M: curves plus pairwise heatmaps. The interaction is a surface to decode, one of {k} that involve the hour.</figcaption></figure>
 </div>"""
 
 
@@ -97,11 +97,11 @@ class Mini:
 PROPERTY = {1: 'What is the contribution of each feature to the prediction?', 2: 'How does changing x<sub>i</sub> change the prediction?', 3: 'Is the model globally monotonic increasing with respect to x<sub>i</sub>?'}
 sw = lambda cls: f'<i class="sw {cls}"></i>'
 def row(n, scope, here, calm_chart, calm_ans, calm_how, chips, ga2m_ans, ga2m_how):
-    chips = "".join(f'<span class="chip{" c1" if i == 0 else ""}">{c}</span>' for i, c in enumerate(chips))
+    terms = f'<p class="terms">Terms with {chips[0]}: {", ".join(chips)}.</p>'
     return f"""<div class="prow">
-  <div class="pq"><p class="kicker">Property {n} ({scope})</p><h3>{PROPERTY[n]}</h3><p>Here: {here}</p></div>
+  <div class="pq"><h3><span class="pn">{n}. {scope.capitalize()}.</span> {PROPERTY[n]}</h3><p>Here: {here}</p></div>
   <div class="pa calm"><p class="who">CALM</p>{calm_chart}<p class="ans">{calm_ans}</p><p class="how">{calm_how}</p></div>
-  <div class="pa ga2m"><p class="who">GA²M</p><div class="chips">{chips}</div><p class="ans no">{ga2m_ans}</p><p class="how">{ga2m_how}</p></div>
+  <div class="pa ga2m"><p class="who">GA²M</p>{terms}<p class="ans no">{ga2m_ans}</p><p class="how">{ga2m_how}</p></div>
 </div>"""
 
 # Bike: the hour, working day / day off. The examples: a point (8 am), a step (8 -> 10 am), an interval (5 -> 8 am).
@@ -138,24 +138,24 @@ props_synth = "\n".join([
         chips_s, "Not by eye", "The curve climbs, but the surface could undo it somewhere. Every row of the surface has to be checked against it."),
 ])
 
-# ---------- accuracy: three cards on one scale, then the paper's datasets ----------
+# ---------- accuracy: one table per dataset, then the paper's datasets ----------
 paper = json.load(open(root / "data/paper_results.json"))
 synth_acc = json.load(open(root / "data/synth_accuracy.json"))["rmse"]
 
-def acc_cards(v, dec, note):
-    """v: RMSE of gam / calm / ga2m / blackbox. The bars share one scale, the GAM's error being the full width."""
-    def card(key, who, hi):
-        if key == "gam": how = "the reference"
-        else: how = f"{round((1 - v[key] / v['gam']) * 100)}% less error than the GAM"
-        return (f'<div class="acard{" hi" if hi else ""}"><p class="who">{who}</p><p class="big">{v[key]:.{dec}f} <small>RMSE</small></p>'
-                f'<div class="bar"><i style="width:{v[key] / v["gam"] * 100:.1f}%"></i><b style="left:{v["blackbox"] / v["gam"] * 100:.1f}%"></b></div><p class="how">{how}</p></div>')
-    return (f'<div class="acc">{card("gam", "GAM", False)}{card("calm", "CALM", True)}{card("ga2m", "GA²M", False)}</div>'
-            f'<p class="cap">{note} The tick marks the black box, {v["blackbox"]:.{dec}f}.</p>')
+def acc_table(v, dec, note):
+    """v: RMSE of gam / calm / ga2m / blackbox, with each one's change in error against the GAM."""
+    def tr(key, who, cls=""):
+        vs = "reference" if key == "gam" else num(-(1 - v[key] / v["gam"]) * 100) + "%"
+        attr = f' class="{cls}"' if cls else ""
+        return f'<tr{attr}><td>{who}</td><td>{v[key]:.{dec}f}</td><td>{vs}</td></tr>'
+    return (f'<table class="acc"><thead><tr><th>Model</th><th>RMSE</th><th>Error vs. the GAM</th></tr></thead><tbody>'
+            f'{tr("gam", "GAM")}{tr("calm", "CALM", "hi")}{tr("ga2m", "GA²M")}{tr("blackbox", "Black box", "ref")}</tbody></table>'
+            f'<p class="cap">{note}</p>')
 
 bs = next(r for r in paper["regression"]["datasets"] if r["name"] == "Bike Sharing")["score"]
-acc_real = acc_cards({"gam": bs["gam"], "calm": bs["calm"], "ga2m": bs["eb2m"], "blackbox": bs["blackbox"]}, 1,
+acc_real = acc_table({"gam": bs["gam"], "calm": bs["calm"], "ga2m": bs["eb2m"], "blackbox": bs["blackbox"]}, 1,
                      "Bike Sharing: error on held-out data, lower is better (5 folds, from the paper).")
-acc_synth = acc_cards(synth_acc, 2, "Error on held-out data, lower is better (5 folds). The noise puts the best possible value at 0.10.")
+acc_synth = acc_table(synth_acc, 2, "Error on held-out data, lower is better (5 folds). The noise puts the best possible value at 0.10.")
 
 def gains(task):
     """Per dataset, what CALM and EB2M gain over the GAM: % lower RMSE, or accuracy points."""
