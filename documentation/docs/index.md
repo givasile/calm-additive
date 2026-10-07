@@ -119,3 +119,9 @@ comparison):
 [effector](https://github.com/givasile/effector), for reading the black box;
 [InterpretML](https://interpret.ml), for the EBM fitted inside the regions;
 [XGBoost](https://xgboost.readthedocs.io), for the default teacher.
+
+## Acknowledgments
+
+The work leading to these results has been funded by the European Union under Grant Agreement No. 101289094 (project AIRIS). Views and opinions expressed are however those of the authors and do not necessarily reflect those of the European Union or the granting authority (HaDEA). Neither the European Union nor the granting authority can be held responsible for them.
+
+The research leading to this work has received funding from the European Union’s Horizon Europe research and innovation program under Grant Agreement No: 101135826 (aidapt.eu).
